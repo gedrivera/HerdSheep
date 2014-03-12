@@ -22,10 +22,10 @@ public class Field
 	private static final byte WOLF_CAP = 3;
 	
 	//Current values
-	private int currentSheep 		= 0;
-	private int currentWolves   = 0;
-	private int livesLost		  	= 0;
-	private int score			    	= 0;
+	private int currentSheep  = 0;
+	private int currentWolve  = 0;
+	private int livesLost     = 0;
+	private int score	  = 0;
 	
 	//Others
 	
