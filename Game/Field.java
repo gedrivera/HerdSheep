@@ -29,8 +29,8 @@ public class Field
 	
 	//Others
 	
-	//Unique Locations, Actors
-	private HashMap<Location, Actor> actorMap;
+	//Unique Points, Actors
+	private HashMap<Point, Actor> actorMap;
 	
 	/**
 	 * Creates a new field Object
@@ -40,13 +40,28 @@ public class Field
 		//Set the device information
 		this.screen_width  = width;
 		this.screen_height = height;
-		this.findBorderLine();		 //Find the border between the zones
+		this.border_line   = this.findBorderLine(); //Find the border between the zones
 		
-		this.actorMap = new HashMap<Location, Actor>();
+		this.actorMap = new HashMap<Point, Actor>();
 	}
 	
 	/**
-	 * Finds the Location of the border_line
+	 * Method to check if a Point is valid.
+	 */
+	 public boolean isValid(Point pon)
+	 {
+	 	if( (pon.x < 0) || (pon.x > this.screen_width) || (pon.y > this.border_line - 15) )
+	 	{
+	 		return false;	
+	 	}
+	 	else
+	 	{
+	 		return true;
+	 	}
+	 }
+	
+	/**
+	 * Finds the Point of the border_line
 	 */
 	private void findBorderLine()
 	{
@@ -62,11 +77,18 @@ public class Field
 	
 	/**
 	 * Iterate or loop through the HashMap<Location, Actor>
-	 * to call the move method on the sheep.
+	 * to call the move method on the actors.
 	 */
 	private void iterateActors()
 	{
-		//TODO: Iterator or some looping device
+		Iterator iter = this.actorMap.entrySet().iterator();
+		
+		while( iter.hasNext() )
+		{
+			
+			//Call the move method for the Actor of the Iterator
+			
+		}
 	}
 
 }
