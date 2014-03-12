@@ -45,8 +45,16 @@ public class Prey implements Actor
 	* For Prey Objects they will move away from the point at 
 	* which the touch was located.
 	*/
-	public void respondToInput()
+	public Location respondToInput()
 	{
 		//TODO: respondToInput
 	}
+	
+	/**
+	 * Method that removes the Actor
+	 */
+	 public void despawn()
+	 {
+	 	//TODO: despawn
+	 }
 }
