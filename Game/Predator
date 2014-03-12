@@ -1,0 +1,44 @@
+package com.schoo.herdsheep;
+
+import android.location.Location;
+
+public class Predator implements Actor
+{
+	private Location loc = null;
+	
+	/**
+	 * Creates a new Predator Object
+	 *
+	 * PRE-CONDITION: Location is within the bounds of the PlayZone
+	 */
+	public Predator(Location l)
+	{
+		this.loc = l;
+	}
+	
+	/**
+	* Returns this Predator Object's current Location
+	*/
+	public Location getLocation()
+	{
+		return this.loc;
+	}
+
+  /**
+  * Called by the code to move the Actor
+	public Location move()
+	{
+		return null;
+	}
+	
+	/**
+	* Called when the screen (Field) is tapped.
+	* Because wolves don't do anything when they
+	* are tapped this returns the wolf's current
+	* Location.
+	*/
+	public Location respondToInput()
+	{
+	  return this.loc;
+	}
+}
