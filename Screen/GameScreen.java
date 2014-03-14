@@ -28,6 +28,69 @@ public class GameScreen extends Activity
 		int width  = pon.x; 
 		int height = pon.y;
 		
-		this.instance = new Field(width, height);		
+		this.instance = new Field(width, height);
+		
+		
+		//Set up how the screen should be displayed
+		this.setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
 	}
+	
+	/**
+	 * Called when this Activity loses focus.
+	 * (When a different Activity has focus)
+	 */
+	 public void onPause()
+	 {
+	 	//Tell the Feild instance to pause
+	 	this.instance.pause();
+	 }
+	 
+	 /**
+	  * Called when this Activity loss focus and is not
+	  * visible to the user.
+	  */
+	  public void onStop()
+	  {
+	  	//Tell the Field instance to pause
+	  	this.instance.pause();
+	  }
+	 
+	 /**
+	  * Called when this Activity is being resumed from a paused
+	  * state.
+	  */
+	  public void onResume()
+	  {
+	  	//Nothing for this yet
+	  }
+	  
+	  
+	  //--------- Event Handles ---------\\
+	  
+	  /**
+	   * Handles TouchEvents that occur outside the bounds
+	   * of any View.
+	   * (When the user touches the background)
+	   */
+	   public boolean onTouchEvent(MotionEvent e)
+	   {
+	   	//TODO: Send Point of event to the Field
+	   	this.instance.fireInputEvent(     );
+	   }
+	   
+	   /**
+	    * Called when the back button is pressed
+	    * This will tell the game to pause.
+	    */
+	   public void onBackPressed()
+	   {
+	   	if(this.instance.isPaused())
+	   	{
+	   		this.instance.resume();
+	   	}
+	   	else
+	   	{
+	   		this.instance.pause();
+	   	}
+	   }
 }
