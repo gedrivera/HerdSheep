@@ -8,7 +8,7 @@ import android.location.Location;
 public class Prey implements Actor
 {
 	//private ImageView image = null;
-	private Location  loc   = null;
+	private Point  pon   = null;
 	//Don't worry about colors yet
 	
 	/**
@@ -16,24 +16,24 @@ public class Prey implements Actor
 	 * 
 	 * PRE-CONDITION: The Location is within the bounds of the PlayZone.
 	 */
-	public Prey(Location l)
+	public Prey(Point pon)
 	{
-		this.loc = l;
+		this.pon = pon;
 	}
 	
 	/**
 	 * Gets the current Location for this Prey Object
 	 */
-	public Location getLocation()
+	public Point getLocation()
 	{
 	  //TODO: Sheep Movement
-		return this.loc;
+		return this.pon;
 	}
 
 	/**
 	 * Implementation of the move method from Actor interface
 	 */
-	public Location move() 
+	public Point move() 
 	{
 		// TODO Auto-generated method stub
 		return null;
