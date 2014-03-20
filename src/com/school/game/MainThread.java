@@ -1,6 +1,8 @@
 package com.school.game;
 
 
+import android.annotation.SuppressLint;
+import android.graphics.Canvas;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
@@ -37,19 +39,34 @@ public class MainThread extends Thread
 	 */
 	public void run()
 	{
-		long tickCount = 0L;
+		Canvas canvas;
 		
 		Log.d(TAG, "Starting game loop");
 		
 		while(running)
 		{
-			tickCount++;
-			
-			//Update game state
-			//Render state to the screen
+			canvas = null;
+			//Try to find the canvas
+			try
+			{
+				canvas = this.surfaceHolder.lockCanvas();
+				
+				synchronized(surfaceHolder)
+				{
+					//Update game state
+					//Draws canvas on the panel
+					this.gameView.onDraw(canvas);
+				}
+			}
+			finally
+			{
+				//Catch exception
+				if( canvas != null)
+				{
+					surfaceHolder.unlockCanvasAndPost(canvas);
+				}
+			}
 		}
-		
-		Log.d(TAG, "Game loop executed " + tickCount + " times");
 	}
 
 }

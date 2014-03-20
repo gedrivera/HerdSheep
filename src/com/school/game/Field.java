@@ -141,6 +141,15 @@ public class Field
 		}
 	}
 	
+	/**
+	 * Called when the game is ended either by the lose of all lives or
+	 * the Player has quit the current game.
+	 */
+	private void quitGame()
+	{
+		//Possible top 5 to 10 high scores?
+	}
+	
 	
 	/**
 	 * Pauses the game

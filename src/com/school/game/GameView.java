@@ -1,7 +1,10 @@
 package com.school.game;
 
+import com.shool.herdsheep.R;
+
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -38,7 +41,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 		this.getHolder().addCallback(this);
 		
 		//Create the game loop thread
-		this.thread = new MainThread(this.getHolder(), this);
+		this.thread = new MainThread(getHolder(), this);
+		
 		
 		//Make this focusable
 		this.setFocusable(true);
@@ -104,10 +108,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 	}
 	
 	/**
-	 * 
+	 * Draws to the screen
 	 */
 	protected void onDraw(Canvas canvas)
 	{
-		
+		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.sheep), 40, 40, null);
 	}
 }
