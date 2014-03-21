@@ -4,6 +4,7 @@ import com.shool.herdsheep.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.util.Log;
@@ -26,6 +27,8 @@ import android.view.SurfaceView;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback
 {
 	private MainThread thread;
+	
+	private Bitmap test = BitmapFactory.decodeResource(getResources(), R.drawable.test);
 	
 	//Debugging tag
 	private static final String TAG = GameView.class.getSimpleName();
@@ -102,6 +105,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 			else
 			{
 				Log.d(TAG, "Coords: x= " + event.getX() + ", y= " + event.getY());
+				
 			}
 		}
 		return super.onTouchEvent(event);
@@ -112,6 +116,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 	 */
 	protected void onDraw(Canvas canvas)
 	{
-		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.sheep), 40, 40, null);
+		Log.d(TAG, "Drawing to screen");
+		canvas.drawBitmap(test, 40, 40, null);
 	}
 }

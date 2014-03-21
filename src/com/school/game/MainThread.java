@@ -1,7 +1,5 @@
 package com.school.game;
 
-
-import android.annotation.SuppressLint;
 import android.graphics.Canvas;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -25,6 +23,8 @@ public class MainThread extends Thread
 		
 		this.surfaceHolder = surfHold;
 		this.gameView      = gameV;
+		
+		this.surfaceHolder.lockCanvas();
 	}
 	/**
 	 * Setter for the running variable
@@ -37,12 +37,14 @@ public class MainThread extends Thread
 	/**
 	 * Main part of a Thread/Runnable
 	 */
+	@Override
 	public void run()
 	{
 		Canvas canvas;
 		
-		Log.d(TAG, "Starting game loop");
+		Log.d(TAG, "Starting game loop. Running state: " + this.running);
 		
+		//TODO: NOT WORKING
 		while(running)
 		{
 			canvas = null;
@@ -51,12 +53,13 @@ public class MainThread extends Thread
 			{
 				canvas = this.surfaceHolder.lockCanvas();
 				
-				synchronized(surfaceHolder)
+	 			synchronized(surfaceHolder)
 				{
 					//Update game state
 					//Draws canvas on the panel
-					this.gameView.onDraw(canvas);
+					this.gameView.draw(canvas);
 				}
+	 			canvas = this.surfaceHolder.lockCanvas();
 			}
 			finally
 			{
