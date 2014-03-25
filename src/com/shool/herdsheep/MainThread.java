@@ -1,4 +1,5 @@
-package com.school.game;
+package com.shool.herdsheep;
+
 
 import android.graphics.Canvas;
 import android.util.Log;
@@ -15,6 +16,14 @@ public class MainThread extends Thread
 	private static final String TAG = MainThread.class.getSimpleName();
 	
 	/**
+	 * Setter for the running variable
+	 */
+	public void setRunning(boolean running)
+	{
+		this.running = running;
+	}
+	
+	/**
 	 * Create a new MainThread Object
 	 */
 	public MainThread(SurfaceHolder surfHold, GameView gameV)
@@ -25,13 +34,7 @@ public class MainThread extends Thread
 		this.gameView      = gameV;
 		
 		this.surfaceHolder.lockCanvas();
-	}
-	/**
-	 * Setter for the running variable
-	 */
-	public void setRunning(boolean running)
-	{
-		this.running = running;
+		Log.d(TAG, "Thread Created");
 	}
 	
 	/**
@@ -42,9 +45,8 @@ public class MainThread extends Thread
 	{
 		Canvas canvas;
 		
-		Log.d(TAG, "Starting game loop. Running state: " + this.running);
+		Log.d(TAG, "Starting game loop.");
 		
-		//TODO: NOT WORKING
 		while(running)
 		{
 			canvas = null;
@@ -55,18 +57,17 @@ public class MainThread extends Thread
 				
 	 			synchronized(surfaceHolder)
 				{
+	 				
 					//Update game state
 					//Draws canvas on the panel
-					this.gameView.draw(canvas);
+					canvas.drawBitmap(this.gameView.SHEEP, 10, 10, null);
 				}
-	 			canvas = this.surfaceHolder.lockCanvas();
 			}
 			finally
 			{
-				//Catch exception
-				if( canvas != null)
+				if(canvas != null)
 				{
-					surfaceHolder.unlockCanvasAndPost(canvas);
+					this.surfaceHolder.unlockCanvasAndPost(canvas);
 				}
 			}
 		}

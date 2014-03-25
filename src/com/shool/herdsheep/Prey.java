@@ -1,4 +1,5 @@
-package com.school.game;
+package com.shool.herdsheep;
+
 
 
 import android.graphics.Point;
@@ -29,6 +30,7 @@ public class Prey implements Actor
 	/**
 	 * Gets the current Location for this Prey Object
 	 */
+	@Override
 	public Point getPoint()
 	{
 		return this.pon;
@@ -46,6 +48,7 @@ public class Prey implements Actor
 	 * Implementation of the move method from Actor interface.
 	 * Max movement per move() method call: 10px in poth x and y
 	 */
+	@Override
 	public Point move() 
 	{
 		int xChange = (int) (Math.random() * 10);
@@ -68,6 +71,7 @@ public class Prey implements Actor
 		}
 	}
 	
+	@Override
 	public Point respondToInput(Point input)
 	{
 		return null;
@@ -76,6 +80,7 @@ public class Prey implements Actor
 	/**
 	 * Removes this Prey Object from the Field
 	 */
+	@Override
 	public void despawn()
 	{
 		this.fie.removeActor(this.pon);

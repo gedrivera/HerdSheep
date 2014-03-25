@@ -1,13 +1,9 @@
-package com.school.game;
+package com.shool.herdsheep;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
-import java.util.Vector;
-
-
-
 import android.graphics.Point;
 import android.view.MotionEvent;
 

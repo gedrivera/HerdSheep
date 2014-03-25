@@ -1,4 +1,4 @@
-package com.school.game;
+package com.shool.herdsheep;
 
 import android.graphics.Point;
 

@@ -1,4 +1,4 @@
-package com.school.game;
+package com.shool.herdsheep;
 
 import com.shool.herdsheep.R;
 
@@ -28,7 +28,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 {
 	private MainThread thread;
 	
-	private Bitmap test = BitmapFactory.decodeResource(getResources(), R.drawable.test);
+	//Bitmap constants
+	public final Bitmap SHEEP = Bitmap.createBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.sheep));
 	
 	//Debugging tag
 	private static final String TAG = GameView.class.getSimpleName();
@@ -54,6 +55,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 	/**
 	 * 
 	 */
+	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int height, int width)
 	{
 		
@@ -62,8 +64,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 	/**
 	 * This method activates the MainThread
 	 */
+	@Override
 	public void surfaceCreated(SurfaceHolder holder)
 	{
+		Log.d(TAG, "Surface Created");
+		
 		this.thread.setRunning(true);
 		this.thread.start();
 	}
@@ -71,6 +76,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 	/**
 	 * Make sure the thread shuts down smoothly.
 	 */
+	@Override
 	public void surfaceDestroyed(SurfaceHolder holder)
 	{
 		boolean retry = true;
@@ -90,8 +96,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 	}
 	
 	/**
-	 * 
+	 * Handles TouchEvents on the GameView.
 	 */
+	@Override
 	public boolean onTouchEvent(MotionEvent event)
 	{
 		if( event.getAction() == MotionEvent.ACTION_DOWN)
@@ -104,8 +111,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 			}
 			else
 			{
+				//Log coordinates
 				Log.d(TAG, "Coords: x= " + event.getX() + ", y= " + event.getY());
-				
+								
 			}
 		}
 		return super.onTouchEvent(event);
@@ -114,9 +122,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 	/**
 	 * Draws to the screen
 	 */
+	@Override
 	protected void onDraw(Canvas canvas)
 	{
-		Log.d(TAG, "Drawing to screen");
-		canvas.drawBitmap(test, 40, 40, null);
 	}
 }

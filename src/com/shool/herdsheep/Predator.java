@@ -1,9 +1,9 @@
-package com.school.game;
+package com.shool.herdsheep;
 
 import java.util.ArrayList;
 
+
 import android.graphics.Point;
-import android.location.Location;
 
 public class Predator implements Actor
 {
@@ -20,6 +20,7 @@ public class Predator implements Actor
 		this.fie = f;
 	}
 	
+	@Override
 	public Point getPoint()
 	{
 		return this.pon;
@@ -29,6 +30,7 @@ public class Predator implements Actor
 	 * Called by the Game to move the Predator.
 	 * Max change per call: 10px in x and y
 	 */
+	@Override
 	public Point move()
 	{
 		int xChange = (int) (Math.random() * 10);
@@ -79,6 +81,7 @@ public class Predator implements Actor
 	/**
 	 * Predators do nothing when tapped.
 	 */
+	@Override
 	public Point respondToInput(Point input)
 	{
 		return this.pon;
@@ -87,6 +90,7 @@ public class Predator implements Actor
 	/**
 	 * Despawns this Predator
 	 */
+	@Override
 	public void despawn()
 	{
 		this.fie.removeActor(this.pon);

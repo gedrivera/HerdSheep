@@ -1,19 +1,14 @@
 package com.shool.herdsheep;
 
-
-import android.app.Activity;
 import android.os.Bundle;
+import android.app.Activity;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-/**
-* This is the Java that controls the Game Screen.
-* This class controls the images on the screen and
-* has a Field Object.
-*/
-public class Game extends Activity
+public class MainActivity extends Activity 
 {
+
 	/*Should be the Activity that is called when the application opens*/
 	
 	//private Field instance; //Instance of the Field (The game) 
@@ -29,10 +24,11 @@ public class Game extends Activity
 	{
 		super.onCreate(savedInstanceState); //Call the super method
 		
+
+		
 		//Request to turn the Title off
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
-		//Make the Activity full screen
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
@@ -63,3 +59,4 @@ public class Game extends Activity
 		super.onStop();
 	}
 }
+
