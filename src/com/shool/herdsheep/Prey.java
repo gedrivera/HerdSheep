@@ -10,21 +10,18 @@ import android.graphics.Point;
  */
 public class Prey implements Actor
 {
-	//private ImageView image = null;
+	public final int IMAGE = R.drawable.sheep;
+	
 	private Point  pon   = null;
-	private Field  fie   = null;
 	
 	/**
 	 * Constructs a new Prey Object
 	 * 
 	 * PRE-CONDITION: The Location is within the bounds of the PlayZone.
 	 */
-	public Prey(Point p, Field f)
+	public Prey(Point p)
 	{
 		this.pon = p;
-		this.fie = f;
-		
-		//this.image = WhiteSheep image
 	}
 	
 	/**
@@ -37,38 +34,14 @@ public class Prey implements Actor
 	}
 	
 	/**
-	 * Returns the Field in which this Prey Object is located
-	 */
-	public Field getFeild()
-	{
-		return this.fie;
-	}
-
-	/**
 	 * Implementation of the move method from Actor interface.
 	 * Max movement per move() method call: 10px in poth x and y
 	 */
 	@Override
 	public Point move() 
 	{
-		int xChange = (int) (Math.random() * 10);
-		int yChange = (int) (Math.random() * 10);
-		Point pon   = new Point();
-		
-		pon.x = this.pon.x + xChange;
-		pon.y = this.pon.y + yChange;
-		
-		//If the Point is valid, then update the Point
-		if( this.fie.isValid(pon) )
-		{
-			this.pon = pon;
-			
-			return this.pon;
-		}
-		else
-		{
-			return this.pon;
-		}
+		//TODO: Create a new move() method
+		return this.pon;
 	}
 	
 	@Override
@@ -83,7 +56,19 @@ public class Prey implements Actor
 	@Override
 	public void despawn()
 	{
-		this.fie.removeActor(this.pon);
+		//TODO: New despwan method
+	}
+
+	@Override
+	public Packet getPacket() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Packet definePacket() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
